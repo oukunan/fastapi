@@ -1,8 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from typing import List
 from messages_crud import get_messages_by_message, create_message_and_update_channel
 from channels_crud import get_channel_by_id
-from models import MessageRequest, MessageResponse
+from models import MessageRequest
 
 message_router = APIRouter()
 
@@ -15,8 +14,8 @@ def post_message(request: MessageRequest):
 
 # @message_router.get("/channels/{id}/messages", response_model=List[MessageResponse])
 @message_router.get("/channels/{id}/messages")
-def get_messages_by_channel(id: str):
-    channel = get_channel_by_id(id)
+def get_messages_by_channel(channel_id: str):
+    channel = get_channel_by_id(channel_id)
     if not channel:
         raise HTTPException(status_code=404, detail="Channel not found")
     return get_messages_by_message(channel["message"])

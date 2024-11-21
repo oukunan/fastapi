@@ -1,6 +1,5 @@
-from database import messages_collection, channels_collection
 from datetime import datetime
-from bson.objectid import ObjectId
+from database import messages_collection, channels_collection
 
 
 def create_message_and_update_channel(payload):
@@ -31,14 +30,13 @@ def get_messages_by_message(message):
     messages = list(messages_collection.find({"message": message}))
 
     response = [
-            {
-                "id": str(message['_id']),
-                "message": message["message"], 
-                "topic": message["topic"],
-                "last_updated": message["last_updated"]
-            }
-            for message in messages
+        {
+            "id": str(message['_id']),
+            "message": message["message"],
+            "topic": message["topic"],
+            "last_updated": message["last_updated"]
+        }
+        for message in messages
     ]
-    
 
     return response

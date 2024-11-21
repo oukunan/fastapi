@@ -17,12 +17,12 @@ def get_all_channels():
     return response
 
 
-def update_channel(id, data):
-    channels_collection.update_one({"_id": ObjectId(id)}, {"$set": data})
+def update_channel(channel_id, data):
+    channels_collection.update_one({"_id": ObjectId(channel_id)}, {"$set": data})
 
 
-def get_channel_by_id(id):
-    if not ObjectId.is_valid(id):
+def get_channel_by_id(channel_id):
+    if not ObjectId.is_valid(channel_id):
         return None
-        
-    return channels_collection.find_one({"_id": ObjectId(id)})
+
+    return channels_collection.find_one({"_id": ObjectId(channel_id)})
