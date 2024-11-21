@@ -1,11 +1,11 @@
 from pymongo.mongo_client import MongoClient
 from .config import settings
 
-uri = settings.DATABASE_URL
+username = settings.MONGO_INITDB_ROOT_USERNAME
+password = settings.MONGO_INITDB_ROOT_PASSWORD
 
-client = MongoClient(uri)
+client = MongoClient(f"mongodb://{username}:{password}@mongo:27017")
 
-db = client[settings.DATABASE_NAME]
-
-messages_collection = db[settings.MESSAGES_COLLECTION_NAME]
-channels_collection = db[settings.CHANNELS_COLLECTION_NAME]
+db = client[settings.MONGO_INITDB_DATABASE]
+messages_collection = db[settings.messages_collection_name]
+channels_collection = db[settings.channels_collection_name]

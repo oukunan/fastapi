@@ -2,10 +2,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str
-    DATABASE_NAME: str
-    MESSAGES_COLLECTION_NAME: str
-    CHANNELS_COLLECTION_NAME: str
+    MONGO_INITDB_ROOT_USERNAME: str
+    MONGO_INITDB_ROOT_PASSWORD: str
+    MONGO_INITDB_DATABASE: str
+
+    messages_collection_name: str = "messages"
+    channels_collection_name: str = "channels"
 
     model_config = SettingsConfigDict(env_file=".env")
 
