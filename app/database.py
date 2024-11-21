@@ -1,10 +1,11 @@
 from pymongo.mongo_client import MongoClient
+from config import settings
 
-uri = "mongodb+srv://admin:password1234@cluster0.0c4dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = settings.DATABASE_URL
 
 client = MongoClient(uri)
 
-db = client["message_system"]
+db = client[settings.DATABASE_NAME]
 
-messages_collection = db["messages"]
-channels_collection = db["channels"]
+messages_collection = db[settings.MESSAGES_COLLECTION_NAME]
+channels_collection = db[settings.CHANNELS_COLLECTION_NAME]
