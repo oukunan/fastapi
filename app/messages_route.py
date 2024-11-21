@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from messages_crud import get_messages_by_message, create_message_and_update_channel
-from channels_crud import get_channel_by_id
-from models import MessageRequest
+from .messages_crud import get_messages_by_message, create_message_and_update_channel
+from .channels_crud import get_channel_by_id
+from .models import MessageRequest
 
 message_router = APIRouter()
 

@@ -1,5 +1,5 @@
 from datetime import datetime
-from database import messages_collection, channels_collection
+from .database import messages_collection, channels_collection
 
 
 def create_message_and_update_channel(payload):

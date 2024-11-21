@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from channels_crud import get_all_channels, update_channel, get_channel_by_id
-from models import ChannelRequest
+from .channels_crud import get_all_channels, update_channel, get_channel_by_id
+from .models import ChannelRequest
 
 channel_route = APIRouter()
 
