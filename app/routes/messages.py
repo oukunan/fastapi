@@ -1,19 +1,18 @@
 from fastapi import APIRouter, HTTPException
-from .messages_crud import get_messages_by_message, create_message_and_update_channel
-from .channels_crud import get_channel_by_id
-from .models import MessageRequest
+from app.crud.messages import get_messages_by_message, create_message_and_update_channel
+from app.crud.channels import get_channel_by_id
+from app.models import MessageRequest
 
-message_router = APIRouter()
+router = APIRouter()
 
 
-@message_router.post("/messages", status_code=201)
+@router.post("/messages", status_code=201)
 def post_message(request: MessageRequest):
     message_id = create_message_and_update_channel(request.dict())
     return {"id": message_id}
 
 
-# @message_router.get("/channels/{id}/messages", response_model=List[MessageResponse])
-@message_router.get("/channels/{id}/messages")
+@router.get("/channels/{id}/messages")
 def get_messages_by_channel(channel_id: str):
     channel = get_channel_by_id(channel_id)
     if not channel:

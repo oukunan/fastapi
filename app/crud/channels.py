@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from .database import channels_collection
+from app.database import channels_collection
 
 
 def get_all_channels():
